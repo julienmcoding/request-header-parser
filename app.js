@@ -10,17 +10,17 @@ app.get('/', (req, res) => {
     res.render('index');
 });
 
-const response = {};
-
 app.get('/api/whoami', (req, res) => {
-    const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-    const language = req.header["accept-language"];
+    const ipaddress = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+    const language = req.header('accept-language');
     const software = req.header('user-agent');
     console.log(JSON.stringify(req.headers));
-    console.log(ip);
+    console.log(ipaddress);
     console.log(language);
     console.log(software);
-    res.json({ ipaddress: ip, language: language, software: software })
+    res.json({ ipaddress,
+         language,
+        software })
     /*if(input.includes('-')) {
         response['unix'] = new Date(input).getTime();
         response['utc'] = new Date(input).toUTCString();
