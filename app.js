@@ -14,24 +14,9 @@ app.get('/api/whoami', (req, res) => {
     const ipaddress = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
     const language = req.header('accept-language');
     const software = req.header('user-agent');
-    console.log(JSON.stringify(req.headers));
-    console.log(ipaddress);
-    console.log(language);
-    console.log(software);
     res.json({ ipaddress,
          language,
         software })
-    /*if(input.includes('-')) {
-        response['unix'] = new Date(input).getTime();
-        response['utc'] = new Date(input).toUTCString();
-    } else {
-        response['unix'] = new Date(parseInt(input)).getTime();
-        response['unix'] = new Date(parseInt(input)).toUTCString();
-    };
-    res.json(response);
-    if (!response['unix'] || !response['unix']) {
-        res.json({ error : "Invalid Date" });
-    }*/
 });
 
 const PORT = process.env.PORT || 3000;
